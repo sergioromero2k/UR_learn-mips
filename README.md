@@ -1,6 +1,6 @@
-#  MIPSfromZero
+# MIPSfromZero
 
-> Learn MIPS assembly language from scratch  step by step, with examples, exercises, and a full cheat sheet.
+> Learn MIPS assembly language from scratch — step by step, with real exercises and a full cheat sheet.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -8,66 +8,58 @@
 
 ---
 
-##  About
+## About
 
-**MIPSfromZero** is a hands-on learning repository for anyone wanting to understand MIPS assembly from the ground up. Whether you're a student tackling computer architecture for the first time, a self-learner curious about low-level programming, or an enthusiast exploring how processors really work  this repo has you covered.
-
-It covers:
-- Basic concepts & register usage
-- Control structures (if/else, loops)
-- Memory manipulation & arrays
-- System calls (I/O)
-- Functions & stack management
-- And more!
+**MIPSfromZero** is a hands-on learning repository for anyone wanting to understand MIPS assembly from the ground up. Whether you're a student tackling computer architecture for the first time, a self-learner curious about low-level programming, or an enthusiast exploring how processors really work — this repo has you covered.
 
 ---
 
-##  Repository Structure
+## Repository Structure
 
-```
-MIPSfromZero/
- 01_basics/          # Registers, data types, simple instructions
- 02_arithmetic/      # ALU operations
- 03_control_flow/    # Branches and jumps
- 04_memory/          # Load/store, arrays
- 05_syscalls/        # I/O with the OS
- 06_functions/       # Procedures and the stack
- exercises/          # Practice problems
- solutions/          # Exercise solutions
-```
+| Folder | Description |
+|--------|-------------|
+| `Clases/` | Class notes and examples |
+| `Practica1/` | First practice exercises |
+| `Operaciones/` | Arithmetic and logic operations |
+| `Condicionales/` | If/else and branching |
+| `Funciones/` | Procedures and stack usage |
+| `arrays/` | Array manipulation |
+| `OrdenamientoDeBurbuja/` | Bubble sort implementation |
+| `Echo/` | Echo program (basic I/O) |
+| `Capturar/` | Input capture exercises |
 
 ---
 
-##  Getting Started
+## Getting Started
 
 1. Install [MARS MIPS Simulator](http://courses.missouristate.edu/KenVollmar/MARS/) or [SPIM](http://spimsimulator.sourceforge.net/)
 2. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/MIPSfromZero.git
+   git clone https://github.com/sergioromero2k/MIPSfromZero.git
    ```
 3. Open any `.asm` file in MARS or SPIM and hit **Run**!
 
 ---
 
-##  MIPS Cheat Sheet
+## MIPS Cheat Sheet
 
-###  Registers
+### Registers
 
 | Register | Name | Use |
 |----------|------|-----|
 | `$zero` | `$0` | Always 0 (constant) |
 | `$at` | `$1` | Assembler temporary |
-| `$v0$v1` | `$2$3` | Return values / syscall codes |
-| `$a0$a3` | `$4$7` | Function arguments |
-| `$t0$t9` | `$8$15, $24$25` | Temporary (not preserved) |
-| `$s0$s7` | `$16$23` | Saved temporaries (preserved) |
+| `$v0-$v1` | `$2-$3` | Return values / syscall codes |
+| `$a0-$a3` | `$4-$7` | Function arguments |
+| `$t0-$t9` | `$8-$15, $24-$25` | Temporary (not preserved) |
+| `$s0-$s7` | `$16-$23` | Saved temporaries (preserved) |
 | `$sp` | `$29` | Stack pointer |
 | `$fp` | `$30` | Frame pointer |
 | `$ra` | `$31` | Return address |
 
 ---
 
-###  Program Structure
+### Program Structure
 
 ```masm
 .data
@@ -84,7 +76,7 @@ main:
 
 ---
 
-###  Arithmetic Instructions
+### Arithmetic Instructions
 
 ```masm
 add  $t0, $t1, $t2    # $t0 = $t1 + $t2  (with overflow check)
@@ -99,7 +91,7 @@ mfhi $t0              # $t0 = HI (remainder)
 
 ---
 
-###  Logical Instructions
+### Logical Instructions
 
 ```masm
 and  $t0, $t1, $t2    # bitwise AND
@@ -115,7 +107,7 @@ sra  $t0, $t1, 2      # shift right arithmetic (preserves sign)
 
 ---
 
-###  Memory (Load / Store)
+### Memory (Load / Store)
 
 ```masm
 lw   $t0, 0($s0)      # load  word  (4 bytes)
@@ -132,7 +124,7 @@ li   $t0, 42          # load immediate value
 
 ---
 
-###  Control Flow
+### Control Flow
 
 ```masm
 # Branches
@@ -157,20 +149,20 @@ slti $t0, $t1, 10    # $t0 = 1 if $t1 < 10,  else 0
 
 ---
 
-###  Common Syscalls
+### Common Syscalls
 
 | `$v0` | Service | Arguments | Result |
 |-------|---------|-----------|--------|
-| `1` | Print integer | `$a0` = integer |  |
-| `2` | Print float | `$f12` = float |  |
-| `4` | Print string | `$a0` = address of string |  |
-| `5` | Read integer |  | `$v0` = integer |
-| `6` | Read float |  | `$f0` = float |
-| `8` | Read string | `$a0` = buffer, `$a1` = length |  |
+| `1` | Print integer | `$a0` = integer | — |
+| `2` | Print float | `$f12` = float | — |
+| `4` | Print string | `$a0` = address of string | — |
+| `5` | Read integer | — | `$v0` = integer |
+| `6` | Read float | — | `$f0` = float |
+| `8` | Read string | `$a0` = buffer, `$a1` = length | — |
 | `9` | Allocate heap | `$a0` = bytes | `$v0` = address |
-| `10` | Exit |  |  |
-| `11` | Print char | `$a0` = char (ASCII) |  |
-| `12` | Read char |  | `$v0` = char (ASCII) |
+| `10` | Exit | — | — |
+| `11` | Print char | `$a0` = char (ASCII) | — |
+| `12` | Read char | — | `$v0` = char (ASCII) |
 
 ```masm
 # Example: print "Hello!"
@@ -184,12 +176,11 @@ slti $t0, $t1, 10    # $t0 = 1 if $t1 < 10,  else 0
 
 ---
 
-###  Functions & Stack
+### Functions & Stack
 
 ```masm
 # Calling a function
 jal  my_function       # call: saves PC+4 in $ra
-# ... (execution returns here after jr $ra)
 
 # Function template
 my_function:
@@ -210,7 +201,7 @@ my_function:
 
 ---
 
-###  Data Directives
+### Data Directives
 
 ```masm
 .data
@@ -226,7 +217,7 @@ my_function:
 
 ---
 
-###  Common Patterns
+### Common Patterns
 
 **If / Else:**
 ```masm
@@ -279,7 +270,7 @@ end_traverse:
 
 ---
 
-##  Tools & Simulators
+## Tools & Simulators
 
 | Tool | Platform | Notes |
 |------|----------|-------|
@@ -290,7 +281,7 @@ end_traverse:
 
 ---
 
-##  Contributing
+## Contributing
 
 Contributions, issues and feature requests are welcome!
 
@@ -302,10 +293,6 @@ Contributions, issues and feature requests are welcome!
 
 ---
 
-##  License
+## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-<p align="center">Made with  for anyone daring enough to go low-level</p>
